@@ -1,12 +1,11 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-BUTTON_LOG_IN_MAIN_PAGE = (By.XPATH, './/*[@id="root"]/div/main/section[2]/div/button')
+BUTTON_LOG_IN_MAIN_PAGE = (By.XPATH, './/button[contains(text(), "Войти в аккаунт")]')
 # Кнопка "Войти" на главной странице
 FIELD_EMAIL_LOG_IN = (By.NAME, 'name')  # Поле "Email" на странице входа
 FIELD_PASSWORD_LOG_IN = (By.NAME, 'Пароль')  # Поле "Пароль" на странице входа
 BUTTON_ACCOUNT = (By.XPATH, './/p[text()="Личный Кабинет"]')  # Кнопка ЛК
-BUTTON_LOG_PAGE = (By.XPATH, './/*[@id="root"]/div/main/div/form/button')  # Кнопка "Войти" на странице входа
+BUTTON_LOG_PAGE = (By.XPATH, './/button[contains(text(), "Войти")]')  # Кнопка "Войти" на странице входа
 FIELD_NAME_REGISTRATION = (By.XPATH, './/label[text()="Имя"]/following-sibling::input[@name="name"]')
 # Поле имени на странице регистрации
 FIELD_EMAIL_REGISTRATION = (By.XPATH, './/label[text()="Email"]/following-sibling::input[@name="name"]')
@@ -21,7 +20,8 @@ HEADER_LOGIN_PAGE = (By.XPATH, './/h2[text()="Вход"]')  # Заголовок
 HEADER_MAIN_PAGE = (By.XPATH, './/h1[text()="Соберите бургер"]')  # Заголовок на главной странице
 BUTTON_LOGOUT = (By.XPATH, './/li[3]/button[text()="Выход"]')  # Кнопка выхода из аккаунта
 BUTTON_CONSTRUCTOR = (By.XPATH, './/li[1]/a/p[text()="Конструктор"]')  # Кнопка перехода к контруктору
-LINK_LOGO = (By.XPATH, '//*[@id="root"]/div/header/nav/div/a[@href="/"]')  # Кнопка-лого
+LINK_LOGO = (By.XPATH, '//header/nav/div/a[@href="/"]')  # Кнопка-лого
+BUTTON_ORDER = (By.XPATH, '//button[text()="Оформить заказ"]')
 BUTTON_SAUCES = (By.XPATH, ".//span[contains(text(), 'Соусы')]/parent::div")
 BUTTON_BUNS = (By.XPATH, ".//span[contains(text(), 'Булки')]/parent::div")
 BUTTON_FILLINGS = (By.XPATH, ".//span[contains(text(), 'Начинки')]/parent::div")
