@@ -8,7 +8,7 @@ from data_for_tests import const, functions as func, locators as loc
 
 class TestRegistration:
     @staticmethod
-    def auth(driver, name, password, email):
+    def registration(driver, name, password, email):
         driver.find_element(*loc.FIELD_NAME_REGISTRATION).send_keys(name)
         driver.find_element(*loc.FIELD_EMAIL_REGISTRATION).send_keys(email)
         driver.find_element(*loc.FIELD_PASSWORD_REGISTRATION).send_keys(password)
@@ -19,13 +19,13 @@ class TestRegistration:
         password = func.generate_password(max_length=6, min_length=6)
         email = func.generate_email()
         driver.get(const.register_page)
-        self.auth(driver, name, password, email)
+        self.registration(driver, name, password, email)
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(loc.HEADER_LOGIN_PAGE))
         assert driver.current_url == const.login_page
 
     def test_auth_invalid_password(self, driver):
         driver.get(const.register_page)
-        self.auth(driver, 'test', func.generate_password(max_length=5), func.generate_email())
+        self.registration(driver, 'test', func.generate_password(max_length=5), func.generate_email())
         assert driver.current_url == const.register_page
         driver.find_element(By.XPATH, './/main').click()
         assert expected_conditions.visibility_of_element_located(loc.MSG_PASSWORD_ERROR) is not False
@@ -33,12 +33,11 @@ class TestRegistration:
     @pytest.mark.parametrize("email", ['test', 'test@test', 'test.test'])
     def test_auth_invalid_email(self, email, driver):
         driver.get(const.register_page)
-        self.auth(driver, 'test', func.generate_password(min_length=6), email)
+        self.registration(driver, 'test', func.generate_password(min_length=6), email)
         assert driver.current_url == const.register_page
         assert expected_conditions.visibility_of_element_located(loc.MSG_EMAIL_ERROR) is not False
 
     def test_auth_empty_name(self, driver):
         driver.get(const.register_page)
-        self.auth(driver, 'test', func.generate_password(max_length=5), func.generate_email())
-        assert driver.current_url == const.register_page
+        self.registration(driver, 'test', func.generate_password(max_length=5), func.generate_email())
         assert driver.current_url == const.register_page
