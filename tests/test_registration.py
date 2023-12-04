@@ -3,9 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from data_for_tests import const
-from data_for_tests import functions as func
-from data_for_tests import locators as loc
+from data_for_tests import const, functions as func, locators as loc
 
 
 class TestRegistration:

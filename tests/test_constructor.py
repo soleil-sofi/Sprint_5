@@ -1,8 +1,7 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from data_for_tests import locators as loc
-from data_for_tests import const
+from data_for_tests import locators as loc, const
 
 
 class TestConstructor:
